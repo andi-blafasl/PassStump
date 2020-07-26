@@ -2,22 +2,22 @@
 
 #include "DigiKeyboard.h"
 
-#define DEBUG
+//#define DEBUG
 
 //ENTER YOUR PIN, USERNAME, PASSWORD HERE
 #define USERNAME "username"
 #define PASSWORD "password"
 //first button and count
 #define PIN_D1_BUTTON b1
-#define PIN_D1_COUNT 3
+#define PIN_D1_COUNT 1
 //second button and count
 #define PIN_D2_BUTTON b2
 #define PIN_D2_COUNT 2
 //third button and count
-#define PIN_D3_BUTTON b1
+#define PIN_D3_BUTTON b3
 #define PIN_D3_COUNT 3
 //fourth button and count
-#define PIN_D4_BUTTON b2
+#define PIN_D4_BUTTON b4
 #define PIN_D4_COUNT 4
 //delay for pin input to reset or accept in milliseconds
 #define PIN_DELAY 2500
@@ -31,8 +31,8 @@
 //define GPIOs for the buttons
 #define B1 5
 #define B2 2
-//#define B3 1
-//#define B4 0
+#define B3 1
+#define B4 0
 
 //define states LOCK
 #define LOCK_CLOSE 1
