@@ -1,0 +1,5 @@
+Bootloader 2.04 flashing
+"C:\Program Files (x86)\Arduino\hardware\tools\avr\bin\avrdude" -C"C:\Program Files (x86)\Arduino\hardware\tools\avr/etc/avrdude.conf" -v -pattiny85 -cstk500v1 -PCOM5 -b19200 -Uflash:w:C:\Users\Andreas\Downloads\t85_default.hex:i -U lfuse:w:0xe1:m -U hfuse:w:0xdd:m -U efuse:w:0xfe:m
+
+change ping 5 from reset to input
+"C:\Program Files (x86)\Arduino\hardware\tools\avr\bin\avrdude" -C"C:\Program Files (x86)\Arduino\hardware\tools\avr/etc/avrdude.conf" -v -pattiny85 -cstk500v1 -PCOM5 -b19200 -U hfuse:w:0x5F:m
