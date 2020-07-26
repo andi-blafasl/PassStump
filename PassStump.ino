@@ -221,8 +221,10 @@ void loop() {
             }
           } else  if ( PIN_D1_BUTTON.wasReleased() || PIN_D3_BUTTON.wasReleased() || PIN_D4_BUTTON.wasReleased() ){
             buttonTime = millis();
-            DigiKeyboard.sendKeyStroke(0);
-            DigiKeyboard.println(F("not d2"));
+            #ifdef DEBUG
+              DigiKeyboard.sendKeyStroke(0);
+              DigiKeyboard.println(F("not d2"));
+            #endif
             d2count = PIN_D2_COUNT;
             lock = LOCK_CLOSE;
             pin = PIN_WRONG;
