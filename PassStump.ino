@@ -1,10 +1,9 @@
 #include <JC_Button.h>
 
-#include "DigiKeyboard.h"
-
 //#define DEBUG
 
 //ENTER YOUR PIN, USERNAME, PASSWORD HERE
+//#define KEYDE //comment if you do not need german keyboard layout
 #define USERNAME "username"
 #define PASSWORD "password"
 //first button and count
@@ -24,10 +23,6 @@
 //delay for auto lock if not used in milliseconds
 #define LOCK_DELAY 3600000 //one houre
 
-#ifdef DEBUG
-  #define LOCK_DELAY 10000
-#endif
-
 //define GPIOs for the buttons
 #define B1 5
 #define B2 2
@@ -45,6 +40,19 @@
 #define PIN_D3 30
 #define PIN_D4 40
 #define PIN_OK 50
+
+//set debug specific settings
+#ifdef DEBUG
+  #define LOCK_DELAY 10000
+#endif
+
+#ifdef KEYDE
+  #include "DigiKeyboardDE.h"
+  #define DigiKeyboard DigiKeyboardDE
+#else
+  #include "DigiKeyboard.h"
+  #define DigiKeyboard DigiKeyboard
+#endif
 
 //set global vars
 bool lock = true;
