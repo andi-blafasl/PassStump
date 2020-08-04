@@ -3,7 +3,7 @@
 //#define DEBUG
 
 //ENTER YOUR PIN, USERNAME, PASSWORD HERE
-//#define KEYDE //comment if you do not need german keyboard layout
+#define KEYDE //comment if you do not need german keyboard layout
 #define USERNAME "username"
 #define PASSWORD "password"
 //first button and count
@@ -47,11 +47,11 @@
 #endif
 
 #ifdef KEYDE
-  #include "DigiKeyboardDE.h"
-  #define DigiKeyboard DigiKeyboardDE
+  #include "DigiKeyboardDe.h"
+  #define DK DigiKeyboardDe
 #else
   #include "DigiKeyboard.h"
-  #define DigiKeyboard DigiKeyboard
+  #define DK DigiKeyboard
 #endif
 
 //set global vars
@@ -93,7 +93,7 @@ void setup() {
   #endif
 
   //init usb-keyboard
-  DigiKeyboard.sendKeyStroke(0);
+  DK.sendKeyStroke(0);
 }
 
 
@@ -124,8 +124,8 @@ void loop() {
         d4count = PIN_D4_COUNT;
         if ( pin == PIN_OK ) {
           #ifdef DEBUG
-            DigiKeyboard.sendKeyStroke(0);
-            DigiKeyboard.println(F("unlock"));
+            DK.sendKeyStroke(0);
+            DK.println(F("unlock"));
           #endif
           buttonTime = millis();
           pin = PIN_WRONG;
@@ -133,8 +133,8 @@ void loop() {
           led();
         } else {
           #ifdef DEBUG
-            DigiKeyboard.sendKeyStroke(0);
-            DigiKeyboard.println(F("reset"));
+            DK.sendKeyStroke(0);
+            DK.println(F("reset"));
           #endif
           lock = LOCK_CLOSE;
           pin = PIN_WRONG;
@@ -149,20 +149,20 @@ void loop() {
           if ( PIN_D1_BUTTON.wasReleased() ) {
             buttonTime = millis();
             #ifdef DEBUG
-              DigiKeyboard.sendKeyStroke(0);
-              DigiKeyboard.println(F("d1s"));
-              DigiKeyboard.println(d1count);
+              DK.sendKeyStroke(0);
+              DK.println(F("d1s"));
+              DK.println(d1count);
             #endif
             --d1count;
             #ifdef DEBUG
-              DigiKeyboard.println(d1count);
+              DK.println(d1count);
             #endif  
             if ( d1count == 0 ) {
               d1count = PIN_D1_COUNT;
               pin = PIN_D2;
               #ifdef DEBUG
-                DigiKeyboard.sendKeyStroke(0);
-                DigiKeyboard.println(F("d1f"));
+                DK.sendKeyStroke(0);
+                DK.println(F("d1f"));
               #endif
             } else {
               pin = PIN_D1;
@@ -170,8 +170,8 @@ void loop() {
           } else if ( PIN_D2_BUTTON.wasReleased() || PIN_D3_BUTTON.wasReleased() || PIN_D4_BUTTON.wasReleased() ) {
             buttonTime = millis();
             #ifdef DEBUG
-              DigiKeyboard.sendKeyStroke(0);
-              DigiKeyboard.println(F("not d1"));
+              DK.sendKeyStroke(0);
+              DK.println(F("not d1"));
             #endif
             d1count = PIN_D1_COUNT;
             lock = LOCK_CLOSE;
@@ -182,26 +182,26 @@ void loop() {
           if ( PIN_D1_BUTTON.wasReleased() ) {
             buttonTime = millis();
             #ifdef DEBUG
-              DigiKeyboard.sendKeyStroke(0);
-              DigiKeyboard.println(F("d1c"));
+              DK.sendKeyStroke(0);
+              DK.println(F("d1c"));
             #endif
             --d1count;
             #ifdef DEBUG
-              DigiKeyboard.println(d1count);
+              DK.println(d1count);
             #endif
             if ( d1count == 0 ) {
               d1count = PIN_D1_COUNT;
               pin = PIN_D2;
               #ifdef DEBUG
-                DigiKeyboard.sendKeyStroke(0);
-                DigiKeyboard.println(F("d1f"));
+                DK.sendKeyStroke(0);
+                DK.println(F("d1f"));
               #endif
             }
           } else  if ( PIN_D2_BUTTON.wasReleased() || PIN_D3_BUTTON.wasReleased() || PIN_D4_BUTTON.wasReleased() ) {
             buttonTime = millis();
             #ifdef DEBUG
-              DigiKeyboard.sendKeyStroke(0);
-              DigiKeyboard.println(F("not d1c"));
+              DK.sendKeyStroke(0);
+              DK.println(F("not d1c"));
             #endif
             d1count = PIN_D1_COUNT;
             lock = LOCK_CLOSE;
@@ -212,26 +212,26 @@ void loop() {
           if ( PIN_D2_BUTTON.wasReleased() ) {
             buttonTime = millis();
             #ifdef DEBUG
-              DigiKeyboard.sendKeyStroke(0);
-              DigiKeyboard.println(F("d2c"));
+              DK.sendKeyStroke(0);
+              DK.println(F("d2c"));
             #endif
             --d2count;
             #ifdef DEBUG
-              DigiKeyboard.println(d2count);
+              DK.println(d2count);
             #endif
             if ( d2count == 0 ) {
               d2count = PIN_D2_COUNT;
               #ifdef DEBUG
-                DigiKeyboard.sendKeyStroke(0);
-                DigiKeyboard.println(F("d2f"));
+                DK.sendKeyStroke(0);
+                DK.println(F("d2f"));
               #endif
               pin = PIN_D3;
             }
           } else  if ( PIN_D1_BUTTON.wasReleased() || PIN_D3_BUTTON.wasReleased() || PIN_D4_BUTTON.wasReleased() ){
             buttonTime = millis();
             #ifdef DEBUG
-              DigiKeyboard.sendKeyStroke(0);
-              DigiKeyboard.println(F("not d2"));
+              DK.sendKeyStroke(0);
+              DK.println(F("not d2"));
             #endif
             d2count = PIN_D2_COUNT;
             lock = LOCK_CLOSE;
@@ -242,26 +242,26 @@ void loop() {
           if ( PIN_D3_BUTTON.wasReleased() ) {
             buttonTime = millis();
             #ifdef DEBUG
-              DigiKeyboard.sendKeyStroke(0);
-              DigiKeyboard.println(F("d3c"));
+              DK.sendKeyStroke(0);
+              DK.println(F("d3c"));
             #endif
             --d3count;
             #ifdef DEBUG
-              DigiKeyboard.println(d3count);
+              DK.println(d3count);
             #endif
             if ( d3count == 0 ) {
               d3count = PIN_D3_COUNT;
               #ifdef DEBUG
-                DigiKeyboard.sendKeyStroke(0);
-                DigiKeyboard.println(F("d3f"));
+                DK.sendKeyStroke(0);
+                DK.println(F("d3f"));
               #endif
               pin = PIN_D4;
             }
           } else  if ( PIN_D1_BUTTON.wasReleased() || PIN_D2_BUTTON.wasReleased() || PIN_D4_BUTTON.wasReleased() ){
             buttonTime = millis();
             #ifdef DEBUG
-              DigiKeyboard.sendKeyStroke(0);
-              DigiKeyboard.println(F("not d3"));
+              DK.sendKeyStroke(0);
+              DK.println(F("not d3"));
             #endif
             d3count = PIN_D3_COUNT;
             lock = LOCK_CLOSE;
@@ -272,26 +272,26 @@ void loop() {
           if ( PIN_D4_BUTTON.wasReleased() ) {
             buttonTime = millis();
             #ifdef DEBUG
-              DigiKeyboard.sendKeyStroke(0);
-              DigiKeyboard.println(F("d4c"));
+              DK.sendKeyStroke(0);
+              DK.println(F("d4c"));
             #endif
             --d4count;
             #ifdef DEBUG
-              DigiKeyboard.println(d4count);
+              DK.println(d4count);
             #endif
             if ( d4count == 0 ) {
               d4count = PIN_D4_COUNT;
               #ifdef DEBUG
-                DigiKeyboard.sendKeyStroke(0);
-                DigiKeyboard.println(F("d4f"));
+                DK.sendKeyStroke(0);
+                DK.println(F("d4f"));
               #endif
               pin = PIN_OK;
             }
           } else if ( PIN_D1_BUTTON.wasReleased() || PIN_D2_BUTTON.wasReleased() || PIN_D3_BUTTON.wasReleased() ){
             buttonTime = millis();
             #ifdef DEBUG
-              DigiKeyboard.sendKeyStroke(0);
-              DigiKeyboard.println(F("not d4"));
+              DK.sendKeyStroke(0);
+              DK.println(F("not d4"));
             #endif
             d4count = PIN_D4_COUNT;
             lock = LOCK_CLOSE;
@@ -301,8 +301,8 @@ void loop() {
         case PIN_OK:
           if ( PIN_D1_BUTTON.wasReleased() || PIN_D2_BUTTON.wasReleased() || PIN_D3_BUTTON.wasReleased() || PIN_D4_BUTTON.wasReleased() ){
             #ifdef DEBUG
-              DigiKeyboard.sendKeyStroke(0);
-              DigiKeyboard.println(F("too much"));
+              DK.sendKeyStroke(0);
+              DK.println(F("too much"));
             #endif
             lock = LOCK_CLOSE;
             pin = PIN_WRONG;
@@ -315,8 +315,8 @@ void loop() {
 
       if ( millis() - buttonTime >= LOCK_DELAY ) {
         #ifdef DEBUG
-        DigiKeyboard.sendKeyStroke(0);
-        DigiKeyboard.println(F("auto lock"));
+        DK.sendKeyStroke(0);
+        DK.println(F("auto lock"));
         #endif
         led();
         led();
@@ -327,8 +327,8 @@ void loop() {
       #ifdef B1
       if ( b1.wasReleased() ) {
         buttonTime = millis();
-        DigiKeyboard.sendKeyStroke(0);
-        DigiKeyboard.println(F(PASSWORD));
+        DK.sendKeyStroke(0);
+        DK.println(F(PASSWORD));
         DigiKeyboard.delay(250);
       }
       #endif
@@ -336,10 +336,10 @@ void loop() {
       #ifdef B2
       if ( b2.wasReleased() ) {
         buttonTime = millis();
-        DigiKeyboard.sendKeyStroke(0);
-        DigiKeyboard.print(F(USERNAME));
-        DigiKeyboard.write('\t');
-        DigiKeyboard.println(F(PASSWORD));
+        DK.sendKeyStroke(0);
+        DK.print(F(USERNAME));
+        DK.write('\t');
+        DK.println(F(PASSWORD));
         DigiKeyboard.delay(250);
       }
       #endif
@@ -347,19 +347,19 @@ void loop() {
       #ifdef B3
       if ( b3.wasReleased() ) {
         buttonTime = millis();
-        DigiKeyboard.sendKeyStroke(0);
-        DigiKeyboard.println(F(USERNAME));
+        DK.sendKeyStroke(0);
+        DK.println(F(USERNAME));
         DigiKeyboard.delay(200);
-        DigiKeyboard.println(F(PASSWORD));
+        DK.println(F(PASSWORD));
         DigiKeyboard.delay(250);
       }
       #endif
       
       #ifdef B4
       if ( b4.wasReleased() ) {
-        DigiKeyboard.sendKeyStroke(0);
+        DK.sendKeyStroke(0);
         #ifdef DEBUG
-          DigiKeyboard.println("lock");
+          DK.println("lock");
         #endif
         led();
         DigiKeyboard.delay(250);
