@@ -94,6 +94,10 @@ void setup() {
 
   //init usb-keyboard
   DK.sendKeyStroke(0);
+
+  //blink twice to show ready state
+  led();
+  led();
 }
 
 
